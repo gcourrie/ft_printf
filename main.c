@@ -6,12 +6,13 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 15:03:48 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 15:59:07 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/03 10:36:28 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 #include "./includes/ft_fonction.h"
 
 int		main(void)
@@ -22,6 +23,7 @@ int		main(void)
 	ft_printf("%23.4d\n", 42);
 	ft_printf("%15.4d\n", -42);
 	ft_printf("%.4d\n", -424242);
+	/* ft_printf("%hhd", CHAR_MAX + 42); */
 //
 	ft_printf("\n");
 //
@@ -31,5 +33,6 @@ int		main(void)
 	printf("%23.4d\n", 42);
 	printf("%15.4d\n", -42);
 	printf("%.4d\n", -424242);
+	/* printf("%hhd", CHAR_MAX + 42); */
 	return (0);
 }

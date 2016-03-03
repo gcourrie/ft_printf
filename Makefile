@@ -6,7 +6,7 @@
 #    By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 16:16:15 by gcourrie          #+#    #+#              #
-#    Updated: 2016/03/02 14:46:20 by gcourrie         ###   ########.fr        #
+#    Updated: 2016/03/03 11:36:34 by gcourrie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -82,7 +82,8 @@ SRC_NAME=		ft_printf.c \
 				ft_itoa_base.c \
 				ft_strndup.c \
 				ft_strjoin_free.c \
-				ft_strjoin_free_2.c
+				ft_strjoin_free_2.c \
+				va_arg_extraction.c
 
 INC_PATH=		./includes/
 
@@ -102,6 +103,7 @@ all:			$(NAME)
 $(NAME):		$(OBJ)
 				ar rc $(NAME) $(OBJ)
 				ranlib $(NAME)
+				$(GCC) $(CFLAGS) -o printf main.c libftprintf.a
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c
 				@mkdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null
@@ -117,4 +119,3 @@ fclean:			clean
 re:				fclean all
 
 .PHONY:			all clean fclean re
-

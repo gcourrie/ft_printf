@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 21:32:23 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 17:00:36 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/03 12:27:13 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,6 @@ t_width			ft_ss(va_list ap, t_width width);
 t_width			ft_null(va_list ap, t_width width);
 char			*ft_minrange(int n, char *str, char c, char s);
 char			*ft_precision(char *str, int n);
+void			va_arg_extraction(va_list ap, t_width width, char type, long long *n);
 
 #endif

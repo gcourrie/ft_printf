@@ -6,19 +6,19 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 17:05:00 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 17:13:55 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/03 12:31:51 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_fonction.h"
 
-t_width				ft_d(va_list ap, t_width width)
+t_width					ft_d(va_list ap, t_width width)
 {
-	long			d;
-	int				n;
+	long long			d;
+	int					n;
 
 	n = 0;
-	d = (long)va_arg(ap, int);
+	va_arg_extraction(ap, width, 'i', &d);
 	if (d < 0 && (n = 1))
 		d *= -1;
 	width.str = ft_itoa_base(d, 10, 0);
@@ -35,9 +35,7 @@ t_width				ft_d(va_list ap, t_width width)
 		else
 			width.str[(n == 0) ? n : (n - 1)] = '-';
 	}
-	if (width.pre == 1 && width.max == 0)
-		width.str = NULL;
-	if (width.str == NULL)
+	if (width.str == NULL || (width.pre == 1 && width.max == 0))
         width.str = ft_strdup("(null)");
 	width.this = ft_strlen(width.str);
 	return (width);
@@ -53,11 +51,11 @@ t_width				ft_s(va_list ap, t_width width)
 	return (width);
 }
 
-t_width				ft_u(va_list ap, t_width width)
+t_width					ft_u(va_list ap, t_width width)
 {
-	long			d;
+	long long	d;
 
-	d = (long)va_arg(ap, unsigned int);
+	va_arg_extraction(ap, width, 'u', &d);
 	width.str = ft_itoa_base(d, 10, 0);
 	if (width.str == NULL)
         width.str = ft_strdup("(null)");
@@ -71,22 +69,24 @@ t_width				ft_u(va_list ap, t_width width)
 	return (width);
 }
 
-t_width				ft_o(va_list ap, t_width width)
+t_width					ft_o(va_list ap, t_width width)
 {
-	unsigned int	o;
+	long long			o;
 
-	o = va_arg(ap, unsigned int);
+	va_arg_extraction(ap, width, 'u', &o);
 	width.str = ft_itoa_base(o, 8, 0);
-	width.this = strlen(width.str);
+	if (width.str == NULL)
+        width.str = ft_strdup("(null)");
+	width.this = ft_strlen(width.str);
 	return (width);
 }
 
-t_width				ft_x(va_list ap, t_width width)
+t_width					ft_x(va_list ap, t_width width)
 {
-	unsigned int	x;
+	long long		 	x;
 
-	x = va_arg(ap, unsigned int);
+	va_arg_extraction(ap, width, 'u', &x);
 	width.str = ft_itoa_base(x, 16, 0);
-	width.this = strlen(width.str);
+	width.this = ft_strlen(width.str);
 	return (width);
 }
