@@ -6,7 +6,7 @@
 #    By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 16:16:15 by gcourrie          #+#    #+#              #
-#    Updated: 2016/03/09 13:35:50 by gcourrie         ###   ########.fr        #
+#    Updated: 2016/03/09 17:33:16 by gcourrie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -104,7 +104,7 @@ all:			$(NAME)
 $(NAME):		$(OBJ)
 				ar rc $(NAME) $(OBJ)
 				ranlib $(NAME)
-				$(GCC) $(CFLAGS) -o printf main.c libftprintf.a
+				$(GCC) -o printf main.c libftprintf.a
 
 $(OBJ_PATH)%.o:	$(SRC_PATH)%.c
 				@mkdir $(OBJ_PATH) 2> /dev/null || echo "" > /dev/null

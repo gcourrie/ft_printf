@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 20:20:47 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 16:34:51 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 18:09:23 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,10 @@ t_width			ft_flags_checker(va_list ap, const char *format,
 	width = ft_check_widthmax(ap, format, &index, width);
 	width = ft_check_type(format, &index, width);
 	if (index != *i || !(format[*i]) || !(g_printf2[width.n].type))
+	{
 		width.error = 1;
+		*i = index;
+	}
 	else
 		*i += 1;
 	return (width);
