@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 17:05:00 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/03 12:31:51 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 17:00:31 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ t_width					ft_d(va_list ap, t_width width)
 		else
 			width.str[(n == 0) ? n : (n - 1)] = '-';
 	}
-	if (width.str == NULL || (width.pre == 1 && width.max == 0))
-        width.str = ft_strdup("(null)");
+	if (width.pre == 1 && width.max == 0)
+		width.str = ft_strdup("\0");
 	width.this = ft_strlen(width.str);
 	return (width);
 }
