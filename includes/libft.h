@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 16:14:19 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 14:46:45 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 14:22:08 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ typedef struct		s_list
 }					t_list;
 
 char				*ft_strjoin_free(char *s1, char *s2);
-char				*ft_strjoin_free_2(char *s1, char *s2);
+char				*ft_strjoin_free_len(char *s1, char *s2,
+											int s1_len, int s2_len);
 void				*ft_memset(void *str, int c, size_t n);
 void				ft_bzero(void *s1, size_t n);
 char				*ft_strcpy(char *dest, const char *src);
@@ -37,6 +38,7 @@ char				*ft_strndup(const char *s, int n, int i);
 size_t				ft_strlen(const char *s);
 void				ft_putchar(char c);
 void				ft_putstr(const char *s);
+void				ft_putstr_len(const char *s, size_t len);
 void				ft_putnbr(int nbr);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(const char *s, int fd);

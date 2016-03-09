@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 14:32:03 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/03 12:34:08 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 14:38:29 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ char				*ft_minrange(int n, char *str, char c, char s)
 	return (ret);
 }
 
-static t_width		ft_fonction(va_list ap, int *nbr,
-								t_width width)
+static t_width		ft_fonction(va_list ap, t_width width)
 {
-	(void)nbr;
 	width = g_printf[width.n].f(ap, width);
 	return (width);
 }
+
+#include <stdio.h>
 
 int					ft_printf(const char *format, ...)
 {
@@ -69,7 +69,9 @@ int					ft_printf(const char *format, ...)
 	int		i;
 	char	*ret;
 	t_width	width;
+	int		len_tot;
 
+	len_tot = 0;
 	width.n = 0;
 	i = 0;
 	ret = NULL;
@@ -79,17 +81,22 @@ int					ft_printf(const char *format, ...)
 		if (format[i++] == '%')
 		{
 			if (width.n < (i - 1))
-				ret = ft_strjoin_free(ret, ft_strndup(format, width.n, i - 1));
+				ret = ft_strjoin_free_len(ret, ft_strndup(format, width.n, i - 1),
+										  len_tot, (i - 1 - width.n));
+			len_tot += (i - 1 - width.n);
 			width = ft_flags_checker(ap, format, &i, width);
-			width = ft_fonction(ap, &(width.error), width);
-			ret = ft_strjoin_free(ret, width.str);
+			width = ft_fonction(ap, width);
+			ret = ft_strjoin_free_len(ret, width.str, len_tot, width.this);
 			width.n = i;
+			len_tot += width.this;
 		}
 	}
 	va_end(ap);
-	ret = ft_strjoin_free(ret, ft_strndup(format, width.n, i));
-	ft_putstr(ret);
+	ret = ft_strjoin_free_len(ret, ft_strndup(format, width.n, i),
+										  len_tot, (i - width.n));
+	len_tot += (i - width.n);
+	ft_putstr_len(ret, len_tot);
 	if (width.error == 1)
 		return (-1);
-	return (ft_strlen(ret));
+	return (len_tot);
 }

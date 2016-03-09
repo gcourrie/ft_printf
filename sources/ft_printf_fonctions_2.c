@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/19 17:24:00 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/02 17:20:01 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 16:06:07 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ t_width				ft_c(va_list ap, t_width width)
 	if (width.pre == 1 && (int)ft_strlen(width.str) < width.max)
 		width.str = ft_minrange(width.max, width.str, '0', ' ');
 	if (width.min > (int)ft_strlen(width.str))
-		width.str = ft_minrange(width.min, width.str, width.zero, width.less);
+		width.str = ft_minrange(width.min - 1, width.str, width.zero, width.less);
+	if (width.min > 1)
+		width.this = width.min;
+	else
+		width.this = 1;
 	return (width);
 }
 
@@ -38,7 +42,7 @@ t_width				ft_p(va_list ap, t_width width)
 	width.str[1] = 'x';
 	width.str[2] = '\0';
 	width.str = ft_strjoin_free(width.str,
-								ft_itoa_base((unsigned long)&p, 16, 0));
+								ft_itoa_base((long long)p, 16, 0));
 	return (width);
 }
 

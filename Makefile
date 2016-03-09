@@ -6,7 +6,7 @@
 #    By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/11/23 16:16:15 by gcourrie          #+#    #+#              #
-#    Updated: 2016/03/03 11:36:34 by gcourrie         ###   ########.fr        #
+#    Updated: 2016/03/09 13:35:50 by gcourrie         ###   ########.fr        #
 #                                                                              #
 #******************************************************************************#
 
@@ -23,6 +23,7 @@ SRC_NAME=		ft_printf.c \
 				ft_printf_fonctions_3.c \
 				ft_putchar.c \
 				ft_putstr.c \
+				ft_putstr_len.c \
 				ft_strcpy.c \
 				ft_strncpy.c \
 				ft_strdup.c \
@@ -82,7 +83,7 @@ SRC_NAME=		ft_printf.c \
 				ft_itoa_base.c \
 				ft_strndup.c \
 				ft_strjoin_free.c \
-				ft_strjoin_free_2.c \
+				ft_strjoin_free_len.c \
 				va_arg_extraction.c
 
 INC_PATH=		./includes/

@@ -6,7 +6,7 @@
 /*   By: gcourrie <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/15 21:32:23 by gcourrie          #+#    #+#             */
-/*   Updated: 2016/03/03 12:27:13 by gcourrie         ###   ########.fr       */
+/*   Updated: 2016/03/09 13:28:28 by gcourrie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_width
     int			pre;
     int			error;
     int			n;
-	int			this;
+	size_t		this;
 	char		*str;
 }				t_width;
 
